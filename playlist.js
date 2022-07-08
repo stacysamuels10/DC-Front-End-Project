@@ -27,25 +27,51 @@ const getPlaylist = async () => {
     }
   );
   const data = await result.json();
-  console.log(data);
 };
 
 getPlaylist();
 
-const searchSong = async (userSearch) => {
+const searchArtist = async (userSearch) => {
   const token = await getToken();
   const result = await fetch(
-    `https://api.spotify.com/v1/search?type=track&q=${userSearch}`,
+    `https://api.spotify.com/v1/search?q=${userSearch}&type=artist,track`,
     {
       method: "GET",
       headers: { Authorization: "Bearer " + token },
     }
   );
   const data = await result.json();
-  console.log(data);
+  const artistButtons = document.createElement("div");
+  artistButtons.classList = "artbuttondiv";
+  console.log(data.tracks);
+  console.log(data.artists);
+
+  for (let i = 0; i < data?.artists?.items?.length; i++) {
+    let arts = data.artists.items[i];
+    let artist = document.createElement("h5");
+    artist.id = `artist-${i}`;
+    artist.innerText = data.artists.items[i].name;
+    let artbtn = document.createElement("button");
+    artbtn.innerText = "Select this artist";
+    artbtn.id = `artbtn-${i}`;
+    artbtn.classList = "button";
+    //console.log(data.artists.items[i].name);
+
+    const moreInfo = (info) => {
+      console.log(info);
+    };
+    artbtn.onclick = () => moreInfo(arts);
+    search.append(artist);
+    search.append(artbtn);
+  }
 };
 
 userSubmit.onclick = () => {
   const userSearch = document.getElementById("searchbar").value;
-  searchSong(userSearch);
+  const artSearch = document.createElement("button");
+  artSearch.innerText = "Artist";
+  const trackSearch = document.createElement("button");
+  trackSearch.innerText = "Songs";
+  search.append(artSearch, trackSearch);
+  searchArtist(userSearch);
 };
