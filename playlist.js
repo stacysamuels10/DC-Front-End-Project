@@ -71,20 +71,27 @@ const showTracks = (data) => {
     let tracks = data.tracks.items[i];
     let track = document.createElement("h5");
     track.id = `track-${i}`;
-    track.innerText = data.tracks.items[i].name;
+    track.innerText = `${data.tracks.items[i].name} by ${data.tracks.items[i].artists[0].name} `;
     let trkbtn = document.createElement("button");
     trkbtn.innerText = "Add this song to playlist";
-    trkbtn.id = `artbtn-${i}`;
+    trkbtn.id = `trkbtn-${i}`;
+    trkbtn.name = data.tracks.items[i].id;
     trkbtn.classList = "button";
 
     const moreInfo = (info) => {
       console.log(info);
     };
-    trkbtn.onclick = () => moreInfo(tracks);
+    trkbtn.onclick = () => {
+      moreInfo(tracks);
+    };
     search.append(track);
     search.append(trkbtn);
   }
 };
+
+// const addSong = async () => {
+//   const token = await getToken();
+// };
 
 userSubmit.onclick = () => {
   const userSearch = document.getElementById("searchbar").value;
