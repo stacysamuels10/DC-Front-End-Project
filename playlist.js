@@ -1,6 +1,7 @@
 const userSubmit = document.getElementById("submit");
 let clientId = config.clientId;
 let clientSecret = config.clientSecret;
+const login = document.getElementById("login");
 
 const getToken = async () => {
   const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -13,6 +14,20 @@ const getToken = async () => {
   });
   const data = await result.json();
   return data.access_token;
+};
+
+const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
+const REDIRECT_URI_AFTER_LOGIN = "http://127.0.0.1:5500/playlist.html";
+const SCOPES = ["playlist-modify-public"];
+const SPACE_DELIMITER = "%20";
+const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
+
+login.onclick = () => {
+  handleLogin();
+};
+
+const handleLogin = () => {
+  window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${clientId}&redirect_uri=${REDIRECT_URI_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
 };
 
 const getPlaylist = async () => {
@@ -89,9 +104,22 @@ const showTracks = (data) => {
   }
 };
 
-// const addSong = async () => {
-//   const token = await getToken();
-// };
+const changePlaylist = async () => {
+  const token = await getToken();
+  const result = await fetch(
+    `https://api.spotify.com/v1/playlists/0ezKkJcf2MlnQs2o1Wo2WN/tracks?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+  const data = await result.json();
+  console.log(data);
+};
 
 userSubmit.onclick = () => {
   const userSearch = document.getElementById("searchbar").value;
@@ -101,4 +129,6 @@ userSubmit.onclick = () => {
   trackSearch.innerText = "Songs";
   search.append(artSearch, trackSearch);
   firstSearch(userSearch);
+  getPlaylist();
+  changePlaylist();
 };
