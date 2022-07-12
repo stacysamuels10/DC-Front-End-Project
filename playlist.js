@@ -6,6 +6,13 @@ const search = document.getElementById("search");
 const container = document.getElementById("search");
 const artistButtons = document.getElementById("artistButtons");
 const results = document.getElementById("results");
+const playlist = document.getElementById("playlistRec");
+
+let currentPlaylist = [
+  { song: "Glamorous by Fergie" },
+  { song: "Halo by Beyonce" },
+  { song: "Somewhere Over the Rainbow by Israel Kamakawiwo'ole" },
+];
 
 const getToken = async () => {
   const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -40,7 +47,7 @@ const firstSearch = async (artSearch, trackSearch, userSearch) => {
   };
   trackSearch.onclick = () => {
     results.innerHTML = null;
-    showTracks(data);
+    showTracks(data, currentPlaylist);
   };
 };
 
@@ -64,12 +71,12 @@ const showArtist = (data) => {
     results.append(artbtn);
     artbtn.onclick = () => {
       results.innerHTML = null;
-      artistTopTrack(artbtn);
+      artistTopTrack(artbtn, currentPlaylist);
     };
   }
 };
 
-const showTracks = (data) => {
+const showTracks = (data, currentPlaylist) => {
   for (let i = 0; i < data?.tracks?.items?.length; i++) {
     let tracks = data.tracks.items[i];
     let track = document.createElement("h5");
@@ -81,18 +88,28 @@ const showTracks = (data) => {
     trkbtn.name = `trkbtn-${i}`;
     trkbtn.classList = "button";
 
-    const moreInfo = (info) => {
+    const moreInfo = (info, currentPlaylist) => {
       console.log(info);
+      const songChosen = document.createElement("li");
+      songChosen.innerText = `${data.tracks.items[i].name} by ${data.tracks.items[i].artists[0].name} `;
+      playlistRec.append(songChosen);
+      const song = {
+        song: `${data.tracks.items[i].name} by ${data.tracks.items[i].artists[0].name} `,
+      };
+      console.log(currentPlaylist);
+      currentPlaylist.push(song);
+      window.localStorage.setItem(0, JSON.stringify(currentPlaylist));
+      console.log(currentPlaylist);
     };
     trkbtn.onclick = () => {
-      moreInfo(tracks);
+      moreInfo(tracks, currentPlaylist);
     };
     results.append(track);
     results.append(trkbtn);
   }
 };
 
-const artistTopTrack = async (artbtn) => {
+const artistTopTrack = async (artbtn, currentPlaylist) => {
   const token = await getToken();
   console.log(`token ${token}`);
   console.log(`button ${artbtn.id}`);
@@ -119,11 +136,21 @@ const artistTopTrack = async (artbtn) => {
     trkbtn.name = `trkbtn-${i}`;
     trkbtn.classList = "button";
 
-    const moreInfo = (info) => {
+    const moreInfo = (info, currentPlaylist) => {
       console.log(info);
+      const songChosen = document.createElement("li");
+      songChosen.innerText = `${data.tracks[i].name} by ${data.tracks[i].artists[0].name} `;
+      playlistRec.append(songChosen);
+      const song = {
+        song: `${data.tracks[i].name} by ${data.tracks[i].artists[0].name} `,
+      };
+      console.log(currentPlaylist);
+      currentPlaylist.push(song);
+      window.localStorage.setItem(0, JSON.stringify(currentPlaylist));
+      console.log(currentPlaylist);
     };
     trkbtn.onclick = () => {
-      moreInfo(tracks);
+      moreInfo(tracks, currentPlaylist);
     };
     results.append(track);
     results.append(trkbtn);
@@ -140,4 +167,13 @@ userSubmit.onclick = () => {
   trackSearch.innerText = "Songs";
   artistButtons.append(artSearch, trackSearch);
   firstSearch(artSearch, trackSearch, userSearch);
+};
+
+window.onload = (event) => {
+  let array = JSON.parse(window.localStorage.getItem(0));
+  for (let i = 0; i < array.length; i++) {
+    const element = document.createElement("li");
+    element.innerText = array[i].song;
+    playlistRec.append(element);
+  }
 };
