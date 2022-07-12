@@ -2,6 +2,10 @@ const userSubmit = document.getElementById("submit");
 let clientId = config.clientId;
 let clientSecret = config.clientSecret;
 const login = document.getElementById("login");
+const search = document.getElementById("search");
+const container = document.getElementById("search");
+const artistButtons = document.getElementById("artistButtons");
+const results = document.getElementById("results");
 
 const getToken = async () => {
   const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -13,37 +17,11 @@ const getToken = async () => {
     body: "grant_type=client_credentials",
   });
   const data = await result.json();
-  return data.access_token;
+  let token = data.access_token;
+  return token;
 };
 
-const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-const REDIRECT_URI_AFTER_LOGIN = "http://127.0.0.1:5500/playlist.html";
-const SCOPES = ["playlist-modify-public"];
-const SPACE_DELIMITER = "%20";
-const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
-
-login.onclick = () => {
-  handleLogin();
-};
-
-const handleLogin = () => {
-  window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${clientId}&redirect_uri=${REDIRECT_URI_AFTER_LOGIN}&scope=${SCOPES_URL_PARAM}&response_type=token&show_dialog=true`;
-};
-
-const getPlaylist = async () => {
-  const token = await getToken();
-  const result = await fetch(
-    `https://api.spotify.com/v1/playlists/0ezKkJcf2MlnQs2o1Wo2WN`,
-    {
-      method: "GET",
-      headers: { Authorization: "Bearer " + token },
-    }
-  );
-  const data = await result.json();
-  console.log(data);
-};
-
-const firstSearch = async (userSearch) => {
+const firstSearch = async (artSearch, trackSearch, userSearch) => {
   const token = await getToken();
   const result = await fetch(
     `https://api.spotify.com/v1/search?q=${userSearch}&type=artist,track&limit=5`,
@@ -53,12 +31,17 @@ const firstSearch = async (userSearch) => {
     }
   );
   const data = await result.json();
-  const artistButtons = document.createElement("div");
-  artistButtons.classList = "artbuttondiv";
-  console.log(data.artists);
+
   console.log(data);
   showArtist(data);
-  showTracks(data);
+  artSearch.onclick = () => {
+    results.innerHTML = null;
+    showArtist(data);
+  };
+  trackSearch.onclick = () => {
+    results.innerHTML = null;
+    showTracks(data);
+  };
 };
 
 const showArtist = (data) => {
@@ -69,15 +52,20 @@ const showArtist = (data) => {
     artist.innerText = data.artists.items[i].name;
     let artbtn = document.createElement("button");
     artbtn.innerText = "Select this artist";
-    artbtn.id = `artbtn-${i}`;
+    artbtn.id = data.artists.items[i].id;
+    artbtn.name = "artbutton";
     artbtn.classList = "button";
 
     const moreInfo = (info) => {
       console.log(info);
     };
     artbtn.onclick = () => moreInfo(arts);
-    search.append(artist);
-    search.append(artbtn);
+    results.append(artist);
+    results.append(artbtn);
+    artbtn.onclick = () => {
+      results.innerHTML = null;
+      artistTopTrack(artbtn);
+    };
   }
 };
 
@@ -88,9 +76,9 @@ const showTracks = (data) => {
     track.id = `track-${i}`;
     track.innerText = `${data.tracks.items[i].name} by ${data.tracks.items[i].artists[0].name} `;
     let trkbtn = document.createElement("button");
-    trkbtn.innerText = "Add this song to playlist";
-    trkbtn.id = `trkbtn-${i}`;
-    trkbtn.name = data.tracks.items[i].id;
+    trkbtn.innerText = "Add this song to recommendations";
+    trkbtn.id = data.tracks.items[i].id;
+    trkbtn.name = `trkbtn-${i}`;
     trkbtn.classList = "button";
 
     const moreInfo = (info) => {
@@ -99,36 +87,57 @@ const showTracks = (data) => {
     trkbtn.onclick = () => {
       moreInfo(tracks);
     };
-    search.append(track);
-    search.append(trkbtn);
+    results.append(track);
+    results.append(trkbtn);
   }
 };
 
-const changePlaylist = async () => {
+const artistTopTrack = async (artbtn) => {
   const token = await getToken();
+  console.log(`token ${token}`);
+  console.log(`button ${artbtn.id}`);
   const result = await fetch(
-    `https://api.spotify.com/v1/playlists/0ezKkJcf2MlnQs2o1Wo2WN/tracks?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh`,
+    `https://api.spotify.com/v1/artists/${artbtn.id}/top-tracks?country=us&limit=5`,
     {
-      method: "POST",
+      method: "GET",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
     }
   );
   const data = await result.json();
-  console.log(data);
+  console.log(data.tracks);
+  for (let i = 0; i < data?.tracks?.length; i++) {
+    let tracks = data.tracks[i];
+    let track = document.createElement("h5");
+    track.id = `track-${i}`;
+    track.innerText = `${data.tracks[i].name} by ${data.tracks[i].artists[0].name} `;
+    let trkbtn = document.createElement("button");
+    trkbtn.innerText = "Add this song to recommendations";
+    trkbtn.id = data.tracks[i].id;
+    trkbtn.name = `trkbtn-${i}`;
+    trkbtn.classList = "button";
+
+    const moreInfo = (info) => {
+      console.log(info);
+    };
+    trkbtn.onclick = () => {
+      moreInfo(tracks);
+    };
+    results.append(track);
+    results.append(trkbtn);
+  }
 };
 
 userSubmit.onclick = () => {
+  results.innerHTML = null;
+  artistButtons.innerHTML = null;
   const userSearch = document.getElementById("searchbar").value;
   const artSearch = document.createElement("button");
   artSearch.innerText = "Artist";
   const trackSearch = document.createElement("button");
   trackSearch.innerText = "Songs";
-  search.append(artSearch, trackSearch);
-  firstSearch(userSearch);
-  getPlaylist();
-  changePlaylist();
+  artistButtons.append(artSearch, trackSearch);
+  firstSearch(artSearch, trackSearch, userSearch);
 };
