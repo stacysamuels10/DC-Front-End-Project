@@ -1,0 +1,11 @@
+#schedule-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+#leftSide {
+  display: grid;
+  place-items: center;
+}
