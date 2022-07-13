@@ -22,7 +22,8 @@ const createForm = () => {
   name.setAttribute("type", "text");
   name.setAttribute("placeholder", "First and Last Name");
   const nameLabel = document.createElement("p");
-  nameLabel.innerText = "Please fill out one time for entire family/couple";
+  nameLabel.innerText =
+    "Please fill out one time only for entire family/couple.";
   form.append(nameTitle, name, nameLabel);
   const attending = document.createElement("p");
   attending.innerText = "Will you be attending?";
@@ -61,22 +62,59 @@ const createForm = () => {
 };
 
 const rsvpYes = () => {
+  const numberLabel = document.createElement("p");
+  numberLabel.innerText = "Number of people attending:";
   const number = document.createElement("INPUT");
   number.setAttribute("type", "number");
   number.setAttribute("min", "0");
   number.setAttribute("max", "4");
-  const numberLabel = document.createElement("label");
-  numberLabel.setAttribute("for", "number");
-  numberLabel.innerHTML = "Number of people attending:";
   const dietaryLabel = document.createElement("p");
-  dietaryLabel.innerText = "Do you have any dietary needs?";
+  dietaryLabel.innerText =
+    "Do you or anyone in your party have any dietary needs?";
   const dietary = document.createElement("TEXTAREA");
   dietary.setAttribute(
     "placeholder",
     "Please list any dietary restrictions you may have"
   );
-  form.append(numberLabel, number);
-  form.append(dietaryLabel, dietary);
+  const extraInfoLabel = document.createElement("p");
+  extraInfoLabel.innerText =
+    "Is there anything else you would like to let Stacy and Adair know?";
+  const extraInfo = document.createElement("TEXTAREA");
+  extraInfo.setAttribute("placeholder", "We are excited to hear from you!");
+  const finalSubmit = document.createElement("button");
+  finalSubmit.innerHTML = "Submit";
+  form.append(
+    numberLabel,
+    number,
+    dietaryLabel,
+    dietary,
+    extraInfoLabel,
+    extraInfo,
+    finalSubmit
+  );
+  finalSubmit.onclick = thankYou;
 };
 
-const rsvpNo = () => {};
+const rsvpNo = () => {
+  form.innerHTML = null;
+  const sorry = document.createElement("h3");
+  sorry.innerText =
+    "We are so sorry to hear that. We will miss you dearly! If there is anything you would like to tell the brides, please write below";
+  const messageToCouple = document.createElement("TEXTAREA");
+  messageToCouple.setAttribute(
+    "placeholder",
+    "We are excited tohear from you!"
+  );
+  const finalSubmit = document.createElement("button");
+  finalSubmit.innerHTML = "Submit";
+  form.append(sorry, messageToCouple, finalSubmit);
+  finalSubmit.onclick = thankYou;
+};
+
+thankYou = () => {
+  form.innerHTML = null;
+  const thankYouMessage = document.createElement("h1");
+  thankYouMessage.innerText =
+    "Thank you for RSVPing! We greatly appreciate you!";
+  form.append(thankYouMessage);
+};
