@@ -39,7 +39,6 @@ const firstSearch = async (artSearch, trackSearch, userSearch) => {
   );
   const data = await result.json();
 
-  console.log(data);
   showArtist(data);
   artSearch.onclick = () => {
     results.innerHTML = null;
@@ -61,7 +60,7 @@ const showArtist = (data) => {
     artbtn.innerText = "Select this artist";
     artbtn.id = data.artists.items[i].id;
     artbtn.name = "artbutton";
-    artbtn.classList = "button";
+    artbtn.classList = "submit";
 
     const moreInfo = (info) => {
       console.log(info);
@@ -86,7 +85,7 @@ const showTracks = (data, currentPlaylist) => {
     trkbtn.innerText = "Add this song to recommendations";
     trkbtn.id = data.tracks.items[i].id;
     trkbtn.name = `trkbtn-${i}`;
-    trkbtn.classList = "button";
+    trkbtn.classList = "submit";
 
     const moreInfo = (info, currentPlaylist) => {
       console.log(info);
@@ -111,8 +110,6 @@ const showTracks = (data, currentPlaylist) => {
 
 const artistTopTrack = async (artbtn, currentPlaylist) => {
   const token = await getToken();
-  console.log(`token ${token}`);
-  console.log(`button ${artbtn.id}`);
   const result = await fetch(
     `https://api.spotify.com/v1/artists/${artbtn.id}/top-tracks?country=us&limit=5`,
     {
@@ -134,7 +131,7 @@ const artistTopTrack = async (artbtn, currentPlaylist) => {
     trkbtn.innerText = "Add this song to recommendations";
     trkbtn.id = data.tracks[i].id;
     trkbtn.name = `trkbtn-${i}`;
-    trkbtn.classList = "button";
+    trkbtn.classList = "submit";
 
     const moreInfo = (info, currentPlaylist) => {
       console.log(info);
@@ -163,8 +160,10 @@ userSubmit.onclick = () => {
   const userSearch = document.getElementById("searchbar").value;
   const artSearch = document.createElement("button");
   artSearch.innerText = "Artist";
+  artSearch.classList = "submit1";
   const trackSearch = document.createElement("button");
   trackSearch.innerText = "Songs";
+  trackSearch.classList = "submit1";
   artistButtons.append(artSearch, trackSearch);
   firstSearch(artSearch, trackSearch, userSearch);
 };

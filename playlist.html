@@ -45,17 +45,14 @@
     </div>
     <div id="container">
       <div id="search">
-        <br />
         <h3>Type in an artist or song to add to the playlist!</h3>
-        <br />
         <input
           type="text"
           name="searchbar"
           id="searchbar"
-          placeholder="Search"
+          placeholder="Search Spotify for a song!"
         />
-        <input type="button" value="Submit" id="submit" />
-        <br />
+        <input type="button" value="Submit" id="submit" class="submit1" />
         <div id="artistButtons"></div>
         <div id="results"></div>
       </div>
@@ -69,19 +66,18 @@
           <li>Love Shack by The B-52's</li>
         </ul>
       </div>
-      <br />
-      <div id="playlistdiv">
-        <iframe
-          id="playlist"
-          style="border-radius: 12px"
-          src="https://open.spotify.com/embed/playlist/0ezKkJcf2MlnQs2o1Wo2WN?utm_source=generator&theme=0"
-          width="50%"
-          height="380"
-          frameborder="0"
-          allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        ></iframe>
-      </div>
+    </div>
+    <div id="playlistdiv">
+      <iframe
+        id="playlist"
+        style="border-radius: 12px"
+        src="https://open.spotify.com/embed/playlist/0ezKkJcf2MlnQs2o1Wo2WN?utm_source=generator&theme=0"
+        width="50%"
+        height="380"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
     </div>
   </body>
 </html>

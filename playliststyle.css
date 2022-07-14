@@ -187,9 +187,83 @@
   body {
     background-color: #ececec;
   }
+  #container {
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
   #playlistdiv {
     display: flex;
     place-content: center;
-    margin: 20px;
+    margin: 40px;
+  }
+  #search {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #playlistRec {
+    margin: 5px;
+    list-style-type: none;
+    font-size: 30px;
+    border: 2px solid black;
+    height: 300px;
+    overflow-x: scroll;
+  }
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #6a624e;
+    width: 300px;
+  }
+  .submit {
+    width: 220px;
+    height: 30px;
+    margin: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #6a624e;
+    background-color: #f5ebe0;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  .submit:hover {
+    background-color: #6a624e;
+    box-shadow: 0px 15px 20px rgba(157, 131, 60, 0.4);
+    color: #f5ebe0;
+    transform: translateY(-7px);
+  }
+  .submit1 {
+    width: 100px;
+    height: 30px;
+    margin-left: 5px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #6a624e;
+    background-color: #f5ebe0;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  .submit1:hover {
+    background-color: #6a624e;
+    box-shadow: 0px 15px 20px rgba(157, 131, 60, 0.4);
+    color: #f5ebe0;
+    transform: translateY(-7px);
+  }
+  h5 {
+    font-size: 15px;
   }
 }

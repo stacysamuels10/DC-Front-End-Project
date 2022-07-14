@@ -82,10 +82,10 @@
   #container {
     display: flex;
     flex-direction: column;
-    margin: 30px;
+    margin: 50px;
   }
   #passcode {
-    gap: 10px;
+    gap: 20px;
     display: flex;
     flex-direction: column;
   }
@@ -116,6 +116,7 @@
   #form {
     display: flex;
     flex-direction: column;
+    margin: 20px;
     gap: 10px;
   }
   #form > div {
