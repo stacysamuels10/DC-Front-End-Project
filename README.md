@@ -4,7 +4,7 @@ Digital Crafts Front End Project
 
 # Overview
 
-This wedding website is a modern template for all your wedding needs. It displays the wedding festivities schedule. It has an RSVP form that can easily be used with an RSVP API to collect data. There is a gallery to post images of the couple throughout their relationship. The site embeds a registry from ZOLA as well as a Frequently Asked Questions page. To learn more about the creation of this site, check out my article on Medium.
+This wedding website is a modern template for all your wedding needs. It displays the wedding festivities schedule. It has an RSVP form that can easily be used with an RSVP API to collect data. There is a gallery to post images of the couple throughout their relationship. The site embeds a registry from ZOLA as well as a Frequently Asked Questions page. To learn more about the creation of this site, check out my [article](https://medium.com/@stacy.samuels10/wedding-website-front-end-project-7574dcdc7865) on Medium.
 
 ## Main Feature
 
