@@ -187,4 +187,9 @@
   body {
     background-color: #ececec;
   }
+  #playlistdiv {
+    display: flex;
+    place-content: center;
+    margin: 20px;
+  }
 }

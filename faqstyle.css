@@ -79,13 +79,15 @@
   .menu__item:hover {
     background-color: #d6d0c9;
   }
+  #questioncard {
+    margin: 25px 10px 25px 10px;
+    border-bottom: 1px solid #6e5e4f;
+  }
 }
 @media (min-width: 511px) and (max-width: 1200px) {
-  * {
-    font-family: "Bubbler One", sans-serif;
-  }
   body {
     background-color: #ececec;
+    font-family: "Bubbler One", sans-serif;
   }
   .topHeader {
     display: none;
@@ -121,7 +123,26 @@
     background-color: #d6d0c9;
   }
   #container {
-    margin-left: 135px;
+    margin-left: 140px;
+    display: flex;
+    flex-direction: column;
+  }
+  #questioncard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+  }
+  .leftside {
+    border-right: 1px solid #6e5e4f;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .rightside {
+    margin-left: 25px;
+    margin-right: 30px;
+  }
+  .title {
+    margin-left: 140px;
   }
 }
 @media (min-width: 1201px) {
@@ -185,5 +206,25 @@
   }
   body {
     background-color: #ececec;
+  }
+  .title {
+    margin: 5px 0px 5px 10px;
+  }
+  #container {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    gap: 60px;
+  }
+  #questioncard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  .leftside {
+    padding-left: 5px;
+  }
+  .rightside {
+    margin-left: 25px;
+    margin-right: 30px;
   }
 }

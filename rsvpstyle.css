@@ -79,6 +79,76 @@
   .menu__item:hover {
     background-color: #d6d0c9;
   }
+  #container {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+  }
+  #passcode {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submit {
+    width: 80px;
+    height: 25px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #6a624e;
+    background-color: #f5ebe0;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .submit:hover {
+    background-color: #6a624e;
+    box-shadow: 0px 15px 20px rgba(157, 131, 60, 0.4);
+    color: #f5ebe0;
+    transform: translateY(-7px);
+  }
+  #form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  #form > div {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
+  }
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #6a624e;
+  }
+  textarea {
+    background-color: transparent;
+    border: none;
+    align-self: flex-start;
+    border-bottom: 2px solid #6a624e;
+    height: 80px;
+    width: 250px;
+  }
+  #dietary1 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 10px 0px 10px;
+  }
+  #note {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 10px 0px 10px;
+  }
 }
 
 @media (min-width: 511px) and (max-width: 1200px) {
@@ -121,8 +191,78 @@
   .menu__item:hover {
     background-color: #d6d0c9;
   }
+
   #container {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
     margin-left: 135px;
+  }
+  #passcode {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submit {
+    width: 80px;
+    height: 25px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #6a624e;
+    background-color: #f5ebe0;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .submit:hover {
+    background-color: #6a624e;
+    box-shadow: 0px 15px 20px rgba(157, 131, 60, 0.4);
+    color: #f5ebe0;
+    transform: translateY(-7px);
+  }
+  #form {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    gap: 10px;
+  }
+  #form > div {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
+  }
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #6a624e;
+  }
+  textarea {
+    background-color: transparent;
+    border: none;
+    align-self: flex-start;
+    border-bottom: 2px solid #6a624e;
+    height: 80px;
+    width: 250px;
+  }
+  #dietary1 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 10px 0px 10px;
+  }
+  #note {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 10px 0px 10px;
   }
 }
 
@@ -187,5 +327,77 @@
   }
   body {
     background-color: #ececec;
+  }
+
+  #container {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+  }
+  #passcode {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .submit {
+    width: 80px;
+    height: 25px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #6a624e;
+    background-color: #f5ebe0;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .submit:hover {
+    background-color: #6a624e;
+    box-shadow: 0px 15px 20px rgba(157, 131, 60, 0.4);
+    color: #f5ebe0;
+    transform: translateY(-7px);
+  }
+  #form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    gap: 10px;
+  }
+  #form > div {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
+  }
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #6a624e;
+  }
+  textarea {
+    background-color: transparent;
+    border: none;
+    align-self: flex-start;
+    border-bottom: 2px solid #6a624e;
+    height: 80px;
+    width: 250px;
+  }
+  #dietary1 {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 10px 0px 10px;
+  }
+  #note {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 10px 0px 10px;
   }
 }
