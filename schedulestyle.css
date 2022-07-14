@@ -126,6 +126,10 @@
   .menu__item:hover {
     background-color: #d6d0c9;
   }
+  #active a {
+    border-top: 1px solid #6a624e;
+    border-bottom: 1px solid #6a624e;
+  }
   .title {
     margin-left: 135px;
   }

@@ -163,6 +163,10 @@ img {
   #overlay1 {
     margin-left: 135px;
   }
+  #active a {
+    border-top: 1px solid #6a624e;
+    border-bottom: 1px solid #6a624e;
+  }
   .bg-text1 {
     backdrop-filter: blur(2px);
     margin-left: 80px;
@@ -308,7 +312,7 @@ img {
     font-size: 28px;
     color: #f5ebe0;
     position: absolute;
-    top: 105%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;

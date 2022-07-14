@@ -163,6 +163,7 @@
     font-size: 17px;
   }
   #active a {
+    border-top: 1px solid #6a624e;
     border-bottom: 1px solid #6a624e;
   }
   .menu__box a:hover {
