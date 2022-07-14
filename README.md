@@ -19,3 +19,5 @@ Technologies used include HTML, CSS, vanilla Javascript, as well as Spotify API.
 To use this application you will need a client ID and a client secret from Spotify API. You will need a Spotify user account (Premium or Free). Once you have an account, go to the [Dashboard](https://developer.spotify.com/dashboard/) page at the Spotify Developer website and access your ID and secret through your dashboard.
 
 Once you have your ID and Secret, clone this repo and on file `playlist.js` input your own `clientId` and `clientSecret` on lines 2 and 3 respectively.
+
+Additionally, to test out the RSVP Form, the code is 8315.
