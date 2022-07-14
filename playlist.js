@@ -11,7 +11,7 @@ const playlist = document.getElementById("playlistRec");
 let currentPlaylist = [
   { song: "Glamorous by Fergie" },
   { song: "Halo by Beyonce" },
-  { song: "Somewhere Over the Rainbow by Israel Kamakawiwo'ole" },
+  { song: "Somewhere Over the Rainbow by Israel K" },
 ];
 
 const getToken = async () => {
@@ -96,7 +96,7 @@ const showTracks = (data, currentPlaylist) => {
         song: `${data.tracks.items[i].name} by ${data.tracks.items[i].artists[0].name} `,
       };
       console.log(currentPlaylist);
-      currentPlaylist.unshift(song);
+      currentPlaylist.push(song);
       window.localStorage.setItem(0, JSON.stringify(currentPlaylist));
       console.log(currentPlaylist);
     };
@@ -142,7 +142,7 @@ const artistTopTrack = async (artbtn, currentPlaylist) => {
         song: `${data.tracks[i].name} by ${data.tracks[i].artists[0].name} `,
       };
       console.log(currentPlaylist);
-      currentPlaylist.unshift(song);
+      currentPlaylist.push(song);
       window.localStorage.setItem(0, JSON.stringify(currentPlaylist));
       console.log(currentPlaylist);
     };
