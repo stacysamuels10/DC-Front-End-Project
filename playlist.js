@@ -96,7 +96,7 @@ const showTracks = (data, currentPlaylist) => {
         song: `${data.tracks.items[i].name} by ${data.tracks.items[i].artists[0].name} `,
       };
       console.log(currentPlaylist);
-      currentPlaylist.push(song);
+      currentPlaylist.unshift(song);
       window.localStorage.setItem(0, JSON.stringify(currentPlaylist));
       console.log(currentPlaylist);
     };
@@ -142,7 +142,7 @@ const artistTopTrack = async (artbtn, currentPlaylist) => {
         song: `${data.tracks[i].name} by ${data.tracks[i].artists[0].name} `,
       };
       console.log(currentPlaylist);
-      currentPlaylist.push(song);
+      currentPlaylist.unshift(song);
       window.localStorage.setItem(0, JSON.stringify(currentPlaylist));
       console.log(currentPlaylist);
     };
