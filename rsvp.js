@@ -128,8 +128,9 @@ const rsvpNo = () => {
     "We are excited tohear from you!"
   );
   const finalSubmit = document.createElement("button");
+  finalSubmit.classList = "submit";
   finalSubmit.innerHTML = "Submit";
-  form.append(sorry, messageToCouple, finalSubmit);
+  submit2.append(sorry, messageToCouple, finalSubmit);
   finalSubmit.onclick = thankYou;
 };
 
