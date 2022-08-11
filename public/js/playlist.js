@@ -14,7 +14,7 @@ const getKey = async () => {
     {
       method: "GET",
       headers: {
-        Authorization: config.apiKey,
+        Authorization: process.env.apiKey,
       },
     }
   );
