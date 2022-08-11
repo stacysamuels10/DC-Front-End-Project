@@ -2,20 +2,13 @@ const express = require("express");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
-const home = require("index");
-
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
-const store = new SequelizeStore({
-  db: models.sequelize,
-});
 
 app.use(express.static("/"));
 
 app.use(express.json());
 app.engine("html", es6Renderer);
-app.set("views", "./");
+app.set("views", ".html");
 app.set("view engine", "html");
-app.use("/", home);
 
 //home page
 app.get("/", (req, res) => {
