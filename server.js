@@ -3,7 +3,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
 
-app.use(express.static("/public"));
+app.use(express.static("./public"));
 
 app.use(express.json());
 app.engine("html", es6Renderer);
