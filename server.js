@@ -1,7 +1,9 @@
 const express = require("express");
 const PORT = process.env.PORT || 3000;
-const clientId = process.env.clientId;
-const clientSecret = process.env.clientSecret;
+var config = {
+  clientId: process.env.clientId,
+  clientSecret: process.env.clientSecret,
+};
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
 
