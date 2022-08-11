@@ -39,16 +39,4 @@ app.get("/rsvp", (req, res) => {
 app.get("/schedule", (req, res) => {
   res.render("schedule");
 });
-app.get("/api_secret", async (req, res) => {
-  try {
-    var apiKey = {
-      clientId: process.env.clientId,
-      clientSecret: process.env.clientSecret,
-    };
-    console.log(apiKey);
-    res.status(200).send(apiKey);
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
 app.listen(PORT);
