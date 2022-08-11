@@ -1,4 +1,4 @@
-# DC-Front-End-Project
+# Wedding Website
 
 Digital Crafts Front End Project
 
