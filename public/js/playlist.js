@@ -1,5 +1,3 @@
-const aws = require("aws-sdk");
-
 const userSubmit = document.getElementById("submit");
 let config = new aws.S3({
   clientId: process.env.clientId,
