@@ -10,11 +10,11 @@ let currentPlaylist = [];
 
 const getKey = async () => {
   const result = await fetch(
-    "https://stacy-adair-wedding-website.herokuapp.com/api_secret",
+    "https://stacy-adair-wedding-website.herokuapp.com/server/api_secret",
     {
       method: "GET",
       headers: {
-        Authorization: process.env.apiKey,
+        Authorization: config.apiKey,
       },
     }
   );
