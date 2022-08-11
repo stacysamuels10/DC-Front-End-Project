@@ -11,7 +11,7 @@ app.set("views", ".html");
 app.set("view engine", "html");
 
 //home page
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   res.render("index");
 });
 
@@ -40,6 +40,4 @@ app.get("/schedule", (req, res) => {
   res.render("schedule");
 });
 
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
-});
+app.listen(PORT);
