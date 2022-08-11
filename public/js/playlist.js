@@ -1,6 +1,6 @@
+const { config } = require("bluebird");
+
 const userSubmit = document.getElementById("submit");
-let clientId = process.env.clientId;
-let clientSecret = process.env.clientSecret;
 const login = document.getElementById("login");
 const search = document.getElementById("search");
 const container = document.getElementById("search");
@@ -10,14 +10,30 @@ const playlist = document.getElementById("playlistRec");
 
 let currentPlaylist = [];
 
-const getKey = async () => {};
+const getKey = async () => {
+  const result = await fetch(
+    "https://stacy-adair-wedding-website.herokuapp.com/api_secret",
+    {
+      method: "GET",
+      headers: {
+        Authorization: config.apiKey,
+      },
+    }
+  );
+  const data = await result.json();
+  let apikey1 = data.clientId;
+  let apikey2 = data.clientSecret;
+  console.log(apikey1, apikey2);
+  return apikey1, apikey2;
+};
 
-const getToken = async () => {
+const getToken = async (apikey1, apikey2) => {
+  const key = await getKey();
   const result = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Basic " + btoa(clientId + ":" + clientSecret),
+      Authorization: "Basic " + btoa(apikey1 + ":" + apikey2),
     },
     body: "grant_type=client_credentials",
   });
