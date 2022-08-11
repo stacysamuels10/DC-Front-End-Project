@@ -1,5 +1,3 @@
-const { config } = require("bluebird");
-
 const userSubmit = document.getElementById("submit");
 const login = document.getElementById("login");
 const search = document.getElementById("search");
