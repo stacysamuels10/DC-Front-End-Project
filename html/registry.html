@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RSVP</title>
-    <script defer src="rsvp.js"></script>
-    <link defer rel="stylesheet" href="rsvpstyle.css" />
+    <title>Registry</title>
+    <link defer rel="stylesheet" href="../css/registrystyle.css" />
   </head>
   <body>
     <div class="heading">
@@ -32,35 +31,35 @@
         <ul class="menu__box">
           <li><a class="menu__item" href="index.html">Home</a></li>
           <li><a class="menu__item" href="schedule.html">Schedule</a></li>
-          <li id="active"><a class="menu__item" href="rsvp.html">RSVP</a></li>
+          <li><a class="menu__item" href="rsvp.html">RSVP</a></li>
           <li><a class="menu__item" href="gallery.html">Gallery</a></li>
           <li><a class="menu__item" href="playlist.html">Playlist</a></li>
-          <li><a class="menu__item" href="registry.html">Regsitry</a></li>
+          <li id="active">
+            <a class="menu__item" href="registry.html">Regsitry</a>
+          </li>
           <li><a class="menu__item" href="faqs.html">FAQs</a></li>
         </ul>
       </div>
     </div>
     <div id="container">
-      <div id="passcode">
-        <h2>Please RSVP by January 30th, 2023</h2>
-        <div id="label">
-          <label for="passcode">RSVP Code:</label>
-          <input type="text" name="passcode" id="RSVP-Code" class="RSVPForm" />
-        </div>
-        <p>This code can be found on the RSVP Card that was sent via email</p>
-        <input type="submit" value="Submit" id="submit" class="submit" />
-        <div id="wronganswer"></div>
-        <div id="form">
-          <div id="nameLine"></div>
-          <div id="nameLabel1"></div>
-          <div id="attending"></div>
-          <div id="submit1"></div>
-          <div id="numattending"></div>
-          <div id="dietary1"></div>
-          <div id="note"></div>
-          <div id="submit2"></div>
-        </div>
-      </div>
+      <a
+        class="zola-registry-embed"
+        href="www.zola.com/wedding/stacyandadair"
+        data-registry-key="stacyandadair"
+        >Our Zola Wedding Registry</a
+      >
+      <script>
+        !(function (e, t, n) {
+          var s,
+            a = e.getElementsByTagName(t)[0];
+          e.getElementById(n) ||
+            ((s = e.createElement(t)),
+            (s.id = n),
+            (s.async = !0),
+            (s.src = "https://widget.zola.com/js/widget.js"),
+            a.parentNode.insertBefore(s, a));
+        })(document, "script", "zola-wjs");
+      </script>
     </div>
   </body>
 </html>
