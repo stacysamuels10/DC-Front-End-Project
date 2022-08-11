@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 //faq page
-app.get("/faq", (req, res) => {
+app.get("/faqs", (req, res) => {
   res.render("faqs");
 });
 //gallery page
