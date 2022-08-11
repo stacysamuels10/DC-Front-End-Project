@@ -1,6 +1,7 @@
+import { config } from "../../server";
 const userSubmit = document.getElementById("submit");
-let clientId = server.config.clientId;
-let clientSecret = server.config.clientSecret;
+let clientId = config.clientId;
+let clientSecret = config.clientSecret;
 const login = document.getElementById("login");
 const search = document.getElementById("search");
 const container = document.getElementById("search");
