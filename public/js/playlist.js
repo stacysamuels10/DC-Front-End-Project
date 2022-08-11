@@ -1,6 +1,5 @@
-//env connection
-//const dotenv = require("dotenv")
-//dotenv.config()
+const dotenv = require("dotenv");
+
 const userSubmit = document.getElementById("submit");
 const login = document.getElementById("login");
 const search = document.getElementById("search");
@@ -11,30 +10,18 @@ const playlist = document.getElementById("playlistRec");
 
 let currentPlaylist = [];
 
-const getKey = async () => {
-  const result = await fetch(
-    "https://stacy-adair-wedding-website.herokuapp.com/server/api_secret",
-    {
-      method: "GET",
-      headers: {
-        Authorization: config.apiKey,
-      },
-    }
-  );
-  const data = await result.json();
-  let apikey1 = data.clientId;
-  let apikey2 = data.clientSecret;
-  console.log(apikey1, apikey2);
-  return apikey1, apikey2;
-};
+dotenv.config();
 
-const getToken = async (apikey1, apikey2) => {
+const clientId = process.env.clientId;
+const clientSecret = process.env.clientSecret;
+
+const getToken = async () => {
   const key = await getKey();
   const result = await fetch("https://accounts.spotify.com/api/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: "Basic " + btoa(apikey1 + ":" + apikey2),
+      Authorization: "Basic " + btoa(clientId + ":" + clientSecret),
     },
     body: "grant_type=client_credentials",
   });
