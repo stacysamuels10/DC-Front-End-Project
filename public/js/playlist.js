@@ -1,8 +1,6 @@
 const userSubmit = document.getElementById("submit");
-let config = new aws.S3({
-  clientId: process.env.clientId,
-  clientSecret: process.env.clientSecret,
-});
+let clientId = process.env.clientId;
+let clientSecret = process.env.clientSecret;
 const login = document.getElementById("login");
 const search = document.getElementById("search");
 const container = document.getElementById("search");
@@ -11,6 +9,8 @@ const results = document.getElementById("results");
 const playlist = document.getElementById("playlistRec");
 
 let currentPlaylist = [];
+
+const getKey = async () => {};
 
 const getToken = async () => {
   const result = await fetch("https://accounts.spotify.com/api/token", {
