@@ -11,7 +11,7 @@ app.set("views", ".html");
 app.set("view engine", "html");
 
 //home page
-app.get("/home", (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
 });
 
