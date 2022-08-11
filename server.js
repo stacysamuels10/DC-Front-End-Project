@@ -12,7 +12,7 @@ app.set("views", "./public/html");
 app.set("view engine", "html");
 
 let config = new aws.S3({
-  CLIENTID: process.env.clientId,
+  clientId: process.env.clientId,
   clientSecret: process.env.clientSecret,
 });
 //home page
