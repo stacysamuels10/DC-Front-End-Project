@@ -45,6 +45,7 @@ app.get("/api_secret", async (req, res) => {
       clientId: process.env.clientId,
       clientSecret: process.env.clientSecret,
     };
+    console.log(apiKey);
     res.status(200).send(apiKey);
   } catch (error) {
     res.status(400).send(error);
