@@ -1,6 +1,5 @@
 const express = require("express");
 const PORT = process.env.PORT || 3000;
-const aws = require("aws-sdk");
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
 
@@ -11,10 +10,6 @@ app.engine("html", es6Renderer);
 app.set("views", "./public/html");
 app.set("view engine", "html");
 
-let config = new aws.S3({
-  clientId: process.env.clientId,
-  clientSecret: process.env.clientSecret,
-});
 //home page
 app.get("/", (req, res) => {
   res.render("index");
