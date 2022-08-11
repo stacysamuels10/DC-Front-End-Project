@@ -1,3 +1,6 @@
+//env connection
+//const dotenv = require("dotenv")
+//dotenv.config()
 const userSubmit = document.getElementById("submit");
 const login = document.getElementById("login");
 const search = document.getElementById("search");
