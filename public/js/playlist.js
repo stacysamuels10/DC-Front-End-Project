@@ -1,7 +1,10 @@
-import { config } from "../../server";
+const aws = require("aws-sdk");
+
 const userSubmit = document.getElementById("submit");
-let clientId = config.clientId;
-let clientSecret = config.clientSecret;
+let config = new aws.S3({
+  clientId: process.env.clientId,
+  clientSecret: process.env.clientSecret,
+});
 const login = document.getElementById("login");
 const search = document.getElementById("search");
 const container = document.getElementById("search");
