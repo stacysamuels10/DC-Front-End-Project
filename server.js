@@ -7,7 +7,7 @@ app.use(express.static("/public"));
 
 app.use(express.json());
 app.engine("html", es6Renderer);
-app.set("views", "./");
+app.set("views", "./public");
 app.set("view engine", "html");
 
 //home page
