@@ -1,5 +1,3 @@
-const dotenv = require("dotenv");
-
 const userSubmit = document.getElementById("submit");
 const login = document.getElementById("login");
 const search = document.getElementById("search");
@@ -9,8 +7,6 @@ const results = document.getElementById("results");
 const playlist = document.getElementById("playlistRec");
 
 let currentPlaylist = [];
-
-dotenv.config();
 
 const clientId = process.env.clientId;
 const clientSecret = process.env.clientSecret;
