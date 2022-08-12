@@ -2,6 +2,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
+const dotenv = require("dotenv");
 
 app.use(express.static("./public"));
 
@@ -9,9 +10,12 @@ app.use(express.json());
 app.engine("html", es6Renderer);
 app.set("views", "./public/html");
 app.set("view engine", "html");
+require("dotenv").config();
 
 const clientId = process.env.clientId;
 const clientSecret = process.env.clientSecret;
+
+console.log(clientId, clientSecret);
 
 app.get("/config", (req, res) => {
   res.send(clientId, clientSecret);
