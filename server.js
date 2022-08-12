@@ -13,6 +13,10 @@ app.set("view engine", "html");
 const clientId = process.env.clientId;
 const clientSecret = process.env.clientSecret;
 
+app.get("/config", (req, res) => {
+  res.send(clientId, clientSecret);
+});
+
 //home page
 app.get("/", (req, res) => {
   res.render("index");
