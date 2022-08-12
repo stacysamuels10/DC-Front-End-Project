@@ -10,7 +10,7 @@ let currentPlaylist = [];
 
 const getKey = async () => {
   const result = await fetch(
-    "https://stacy-adair-wedding-website.herokuapp.com/server/config",
+    "https://stacy-adair-wedding-website.herokuapp.com/config",
     {
       method: "GET",
       headers: {
