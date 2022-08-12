@@ -12,11 +12,6 @@ app.set("views", "./public/html");
 app.set("view engine", "html");
 require("dotenv").config();
 
-const clientId = process.env.clientId;
-const clientSecret = process.env.clientSecret;
-
-console.log(clientId, clientSecret);
-
 //home page
 app.get("/", (req, res) => {
   res.render("index");
@@ -46,4 +41,5 @@ app.get("/rsvp", (req, res) => {
 app.get("/schedule", (req, res) => {
   res.render("schedule");
 });
+
 app.listen(PORT);
