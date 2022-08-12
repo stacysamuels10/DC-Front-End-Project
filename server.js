@@ -2,7 +2,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const es6Renderer = require("express-es6-template-engine");
-const dotenv = require("dotenv");
+const { apiKeys } = require("./models/apikeys");
 
 app.use(express.static("./public"));
 
@@ -11,6 +11,22 @@ app.engine("html", es6Renderer);
 app.set("views", "./public/html");
 app.set("view engine", "html");
 require("dotenv").config();
+
+//get keys from database
+app.get("/config", async (req, res) => {
+  try {
+    const findKey = await apiKeys.findOne({
+      where: {
+        id: 2,
+      },
+    });
+    if (findKey) {
+      res.status(200).send(findKey);
+    }
+  } catch (error) {
+    res.status(400).send("Database is down");
+  }
+});
 
 //home page
 app.get("/", (req, res) => {
