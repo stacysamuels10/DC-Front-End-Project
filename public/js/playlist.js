@@ -8,20 +8,8 @@ const playlist = document.getElementById("playlistRec");
 
 let currentPlaylist = [];
 
-const getKey = async () => {
-  const result = await fetch(
-    "https://stacy-adair-wedding-website.herokuapp.com/config",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  const data = await result.json();
-  console.log(data);
-  return data;
-};
+const clientId = process.env.clientId;
+const clientSecret = process.env.clientSecret;
 
 const getToken = async () => {
   const key = await getKey();

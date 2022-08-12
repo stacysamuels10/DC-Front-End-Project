@@ -17,10 +17,6 @@ const clientSecret = process.env.clientSecret;
 
 console.log(clientId, clientSecret);
 
-app.get("/config", (req, res) => {
-  res.send(clientId, clientSecret);
-});
-
 //home page
 app.get("/", (req, res) => {
   res.render("index");
