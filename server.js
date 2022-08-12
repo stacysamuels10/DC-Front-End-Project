@@ -10,6 +10,9 @@ app.engine("html", es6Renderer);
 app.set("views", "./public/html");
 app.set("view engine", "html");
 
+const clientId = process.env.clientId;
+const clientSecret = process.env.clientSecret;
+
 //home page
 app.get("/", (req, res) => {
   res.render("index");

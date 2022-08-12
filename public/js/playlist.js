@@ -8,9 +8,6 @@ const playlist = document.getElementById("playlistRec");
 
 let currentPlaylist = [];
 
-const clientId = process.env.clientId;
-const clientSecret = process.env.clientSecret;
-
 const getToken = async () => {
   const key = await getKey();
   const result = await fetch("https://accounts.spotify.com/api/token", {
