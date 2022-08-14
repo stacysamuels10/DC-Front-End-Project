@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "postgres",
-    "password": null,
-    "database": "apiKeys_development",
-    "host": "127.0.0.1",
+    "username": "beluhxvg",
+    "password": "MQvW-ynMvib5eBaG0f4FoCh-0tNbYM6L",
+    "database": "hansken.db.elephantsql.com_development",
+    "host": "hansken.db.elephantsql.com/beluhxvg",
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
-    "password": null,
-    "database": "apiKeys_test",
-    "host": "127.0.0.1",
+    "username": "beluhxvg",
+    "password": "MQvW-ynMvib5eBaG0f4FoCh-0tNbYM6L",
+    "database": "hansken.db.elephantsql.com_test",
+    "host": "hansken.db.elephantsql.com/beluhxvg",
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
-    "password": null,
-    "database": "apiKeys_production",
-    "host": "127.0.0.1",
+    "username": "beluhxvg",
+    "password": "MQvW-ynMvib5eBaG0f4FoCh-0tNbYM6L",
+    "database": "hansken.db.elephantsql.com_production",
+    "host": "hansken.db.elephantsql.com/beluhxvg",
     "dialect": "postgres"
   }
 }
